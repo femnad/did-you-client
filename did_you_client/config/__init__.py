@@ -7,8 +7,8 @@ from configparser import ConfigParser
 class DidYouConfig(object):
 
     default_values = {'default': {'host': '127.0.0.1',
-                                  'subscription_port': '5556',
-                                  'request_port': '5556'},
+                                  'request_port': '5555',
+                                  'subscription_port': '5556'},
                       'checker': {'sleep_period': '600'}}
 
     def __init__(self, configuration_file):
@@ -17,7 +17,7 @@ class DidYouConfig(object):
         config = ConfigParser()
         config.read(configuration_file)
         self._default_section = config['default']
-        self._redis_section = config['checker']
+        self._checker_section = config['checker']
 
     def _write_default_config_file(self, filename):
         config = ConfigParser()
@@ -43,4 +43,3 @@ class DidYouConfig(object):
     @property
     def sleep_period(self):
         return self._checker_section['sleep_period']
-

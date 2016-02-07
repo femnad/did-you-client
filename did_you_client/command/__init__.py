@@ -25,7 +25,7 @@ def run_checker():
     configurator = DidYouConfig(configuration_file)
     sleep_period = int(configurator.sleep_period)
 
-    task_subscriber = TaskSubscriber()
+    task_subscriber = TaskSubscriber(configurator)
 
     while True:
         task_list = task_subscriber.get_task_list()

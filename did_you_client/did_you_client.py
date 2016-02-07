@@ -36,14 +36,3 @@ class TaskSubscriber(object):
     def get_task_list(self):
         task_list = msgpack.unpackb(self._socket.recv())
         return task_list
-
-if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        executable_name = sys.argv[0]
-        print("Usage {} <command> <task-name>".format(executable_name))
-        exit()
-    command, task_name = sys.argv[1:]
-    task_commander = TaskCommander()
-    response = task_commander.run_command(
-        TaskCommand[command], task_name)
-    print("Got response: {}".format(str(response, 'UTF-8')))
