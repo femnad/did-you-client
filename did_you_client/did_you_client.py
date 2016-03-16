@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 import msgpack
-import sys
 import zmq
 
 from did_you_config import DidYouConfig
-from task_command import TaskCommand
 
 
 class TaskCommander(object):
@@ -21,6 +19,7 @@ class TaskCommander(object):
         task_message = {"name": task_name, "command": command.value}
         self._socket.send(msgpack.packb(task_message))
         return self._socket.recv()
+
 
 class TaskSubscriber(object):
 
