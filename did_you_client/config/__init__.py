@@ -8,8 +8,7 @@ class DidYouConfig(object):
 
     default_values = {'default': {'host': '127.0.0.1',
                                   'request_port': '5555',
-                                  'subscription_port': '5556'},
-                      'checker': {'sleep_period': '600'}}
+                                  'subscription_port': '5556'}}
 
     def __init__(self, configuration_file):
         if not os.path.exists(configuration_file):
@@ -17,7 +16,6 @@ class DidYouConfig(object):
         config = ConfigParser()
         config.read(configuration_file)
         self._default_section = config['default']
-        self._checker_section = config['checker']
 
     def _write_default_config_file(self, filename):
         config = ConfigParser()
@@ -39,7 +37,3 @@ class DidYouConfig(object):
     @property
     def request_port(self):
         return self._default_section['request_port']
-
-    @property
-    def sleep_period(self):
-        return self._checker_section['sleep_period']
